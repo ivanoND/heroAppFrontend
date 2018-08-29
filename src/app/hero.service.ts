@@ -10,7 +10,7 @@ import {MessageService} from './message.service';
 export class HeroService {
 
   constructor(private messageService: MessageService) {
-    console.log('Creazione di HeroService');
+    messageService.add('Creazione di HeroService');
   }
 
   getHeroes(): Observable<Hero[]> {

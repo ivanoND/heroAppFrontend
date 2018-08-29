@@ -7,7 +7,7 @@ export class MessageService {
   messages: string[] = [];
 
   constructor() {
-    console.log('Creazione di MessageService');
+    this.add('Creazione di MessageService');
   }
 
   add(message: string) {
