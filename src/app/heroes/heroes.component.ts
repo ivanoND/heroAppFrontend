@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Hero} from '../hero';
-import {HEROES} from '../mock-heroes';
+import {HeroService} from '../hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -11,13 +11,23 @@ export class HeroesComponent implements OnInit {
 
   selectedHero: Hero;
 
-  heroes = HEROES;
+  heroes: Hero[];
 
-  constructor() {
+  // questa sintassi allo stesso tempo dichiara un campo
+  // privato con il nome fornito e lo inizializza con il
+  // valore passato al costruttore
+  constructor(private heroService: HeroService) {
+    console.log('Creazione di HeroesComponent');
   }
 
   ngOnInit() {
+    this.getHeroes();
   }
+
+  getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
+  }
+
   // in java sarebbe public void onSelect(Hero hero)
   // noinspection TsLint
   onSelect(hero: Hero) {
