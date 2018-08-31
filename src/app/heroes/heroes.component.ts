@@ -31,6 +31,13 @@ export class HeroesComponent implements OnInit {
   add(name: string): void {
     name = name.trim();
     if (name) {
+      // questo vale in ES6
+      // {nomeVar} leggetela come {nomeVar: 'valore di quela variabile'}
+      // per cui se la variabile name vale 'Superman'
+      // il costrutto {name} e' equivalente a {name: 'Superman'}
+      // in generale vale {var1,var2} => {var1: var1, var2: var2}
+      // la seconda parte ha a che fare con typeScript ed e' un'operazione a livello di sintassi
+      // analoga all'operatore di cast di Java.
       this.heroService.addHero({name} as Hero)
         .subscribe(hero => this.heroes.push(hero));
     }
