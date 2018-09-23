@@ -15,7 +15,7 @@ const httpOptions = {
 export class HeroService {
 
   // URL to web api
-  private heroesUrl = 'api/heroes';
+  private heroesUrl = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient,
               private messageService: MessageService) {
@@ -23,7 +23,7 @@ export class HeroService {
   }
 
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
+    return this.http.get<Hero[]>(this.heroesUrl.concat("/heroes"))
       .pipe(
         tap(heroes => this.log(`fetched ${heroes.length} heroes`)),
         catchError(this.handleError('getHeroes', []))
@@ -42,7 +42,7 @@ export class HeroService {
 
   /** POST: add a new hero to the server */
   addHero(hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
+    return this.http.post<Hero>(this.heroesUrl.concat("/hero"), hero, httpOptions).pipe(
       tap((h: Hero) => this.log(`added hero w/ id=${h.id}`)),
       catchError(this.handleError<Hero>('addHero'))
     );
@@ -62,7 +62,7 @@ export class HeroService {
   // (nomeVar: tipo1 | tipo2 | tipo3 ...)
   deleteHero(hero: Hero | number): Observable<Hero> {
     const id = typeof hero === 'number' ? hero : hero.id;
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.heroesUrl}/hero/${id}`;
 
     return this.http.delete<Hero>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted hero id=${id}`)),

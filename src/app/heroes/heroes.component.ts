@@ -39,12 +39,12 @@ export class HeroesComponent implements OnInit {
       // la seconda parte ha a che fare con typeScript ed e' un'operazione a livello di sintassi
       // analoga all'operatore di cast di Java.
       this.heroService.addHero({name} as Hero)
-        .subscribe(hero => this.heroes.push(hero));
+        .subscribe(hero => this.getHeroes());
     }
   }
 
   delete(hero: Hero): void {
     this.heroService.deleteHero(hero)
-      .subscribe(() => this.heroes = this.heroes.filter(h => h !== hero));
+      .subscribe(() => this.getHeroes());
   }
 }
