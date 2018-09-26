@@ -1,4 +1,40 @@
 /* HeroDetailComponent's private CSS styles */
+.abilities {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+
+.abilities li {
+  position: relative;
+  cursor: pointer;
+  background-color: #EEE;
+  margin-top: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  width: 205px;
+  border-radius: 4px;
+}
+
+.abilities li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+.abilities a {
+  color: #888;
+  text-decoration: none;
+  position: relative;
+  display: block;
+  width: 250px;
+}
+
+.abilities a:hover {
+  color:#607D8B;
+}
+
 label {
   display: inline-block;
   width: 3em;

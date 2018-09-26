@@ -7,6 +7,13 @@
       <input [(ngModel)]="hero.name" placeholder="name"/>
     </label>
   </div>
+  <div>
+    <ul class="abilities">
+      <li *ngFor="let ability of abilities">
+          <a>{{ability.description}}</a>
+      </li>
+    </ul>
+  </div>
 
   <button (click)="save()">save</button>
   <button (click)="goBack()">go back</button>
