@@ -1,6 +1,10 @@
 export class Ability {
     
     id: number;
-    description: string;
+    description: String;
+
+    toString():String{
+      return "{id:" + this.id + "description:" + this.description + "}"
+    }
   }
   

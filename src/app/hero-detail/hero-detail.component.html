@@ -7,13 +7,21 @@
       <input [(ngModel)]="hero.name" placeholder="name"/>
     </label>
   </div>
-  <div>
-    <ul class="abilities">
-      <li *ngFor="let ability of abilities">
-          <a>{{ability.description}}</a>
-      </li>
-    </ul>
-  </div>
+  <h2>Hero abilities</h2>
+
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let ability of heroAbilities">{{ability.description}}</mat-list-item>
+  </mat-list>
+
+  <h2>Adding/remove abilities</h2>
+
+   <mat-selection-list #list >
+    <mat-list-option #element *ngFor="let ability of allAbilities" (click) = "onClick(element,ability,list)">
+     {{ability.description}}
+    </mat-list-option>
+  </mat-selection-list>
+
+
 
   <button (click)="save()">save</button>
   <button (click)="goBack()">go back</button>

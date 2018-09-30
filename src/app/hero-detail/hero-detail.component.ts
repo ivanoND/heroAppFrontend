@@ -6,7 +6,9 @@ import {Location} from '@angular/common';
 import { Ability } from 'src/app/ability';
 import { tap } from 'rxjs/operators';
 import { MessageService } from '../message.service';
-
+import { AbilityService } from '../abilityService';
+import * as _ from "lodash";
+import { MatSelectionList, MatListOption } from '@angular/material/list';
 
 @Component({
   selector: 'app-hero-detail',
@@ -15,34 +17,61 @@ import { MessageService } from '../message.service';
 })
 export class HeroDetailComponent implements OnInit {
   hero: Hero;
-  abilities: Ability[];
+  allAbilities: Ability[];
+  heroAbilities: Ability[];
+  selectedAbilities: Ability[]=[];
 
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
-    private location: Location
+    private location: Location,
+    private abilityService : AbilityService
   ) {
   }
+  
 
   ngOnInit() {
+    
     this.getHero();
+    this.getAbilities();
+
   }
+
+  onClick(element,ability,list):void{
+    var array=this.selectedAbilities;
+    if(element.selected==true){
+      array.push(ability);
+    }else if(element.selected == false){
+      array= _.without(array,ability);
+    }
+    this.selectedAbilities=array;
+    console.log("selected abilities:--------");
+    array.forEach(element => {
+      console.log(element);
+    });
+  }
+
   getAbilities(): void {
-    this.abilities=this.hero.abilities;
+    this.abilityService.getAbilities()
+      .subscribe(abilities => this.allAbilities=abilities);
   }
 
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(id)
-      .subscribe(hero =>{ this.hero = hero; this.getAbilities()});
+      .subscribe(hero =>{ this.hero = hero; this.heroAbilities=hero.abilities; });
   }
+
 
   goBack(): void {
     this.location.back();
   }
 
   save(): void {
+    this.hero.abilities=this.selectedAbilities;
     this.heroService.updateHero(this.hero)
       .subscribe(() => this.goBack());
   }
+
+
 }

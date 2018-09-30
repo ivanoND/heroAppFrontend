@@ -11,6 +11,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import {MatListModule} from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     FormsModule,
     AngularFontAwesomeModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
