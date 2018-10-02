@@ -12,7 +12,7 @@
 
   <mat-list role="list" [sortablejs]="heroAbilities" [sortablejsOptions]="options" class="ability">
     <mat-list-item role="listitem" *ngFor="let ability of heroAbilities" class="ability">
-      <a routerLink="/detail/{{ability.id}}">
+      <a routerLink="/ability/detail/{{ability.id}}">
         {{ability.description}}
       </a>
     </mat-list-item>

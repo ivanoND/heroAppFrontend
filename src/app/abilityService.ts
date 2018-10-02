@@ -22,6 +22,14 @@ const httpOptions = {
     messageService.add('Creazione di AbilityService');
   }
 
+  getAbility(id: number): Observable<Ability> {
+    const url = `${this.abilitiesUrl}/ability/${id}`;
+    return this.http.get<Ability>(url).pipe(
+      tap(_ => this.log(`fetched ability id=${id}`)),
+      catchError(this.handleError<Ability>(`getAbility id=${id}`))
+    );
+  } 
+
   getAbilities(): Observable<Ability[]> {
     return this.http.get<Ability[]>(this.abilitiesUrl.concat("/abilities"))
       .pipe(
@@ -36,6 +44,13 @@ const httpOptions = {
         tap(abilities => this.log(`fetched ${abilities.length} abilities`)),
         catchError(this.handleError('getAbilities', []))
       );
+  }
+
+  updateAbility(ability: Ability): Observable<any> {
+    return this.http.put(this.abilitiesUrl.concat("/ability"), ability, httpOptions).pipe(
+      tap(_ => this.log(`updated ability id=${ability.id}`)),
+      catchError(this.handleError<any>('updateAbility'))
+    );
   }
 
   /** Log a HeroService message with the MessageService */
