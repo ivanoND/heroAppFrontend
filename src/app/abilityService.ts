@@ -30,6 +30,14 @@ const httpOptions = {
       );
   }  
 
+  getNotHeroAbilities(id:number): Observable<Ability[]> {
+    return this.http.get<Ability[]>(this.abilitiesUrl.concat(`/abilities/${id}`))
+      .pipe(
+        tap(abilities => this.log(`fetched ${abilities.length} abilities`)),
+        catchError(this.handleError('getAbilities', []))
+      );
+  }
+
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`AbilityService: ${message}`);

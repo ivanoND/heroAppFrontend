@@ -1,4 +1,4 @@
-import {Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit ,AfterContentInit} from '@angular/core';
 import {Hero} from '../hero';
 import {HeroService} from '../hero.service';
 import {ActivatedRoute} from '@angular/router';
@@ -6,18 +6,23 @@ import {Location} from '@angular/common';
 import { Ability } from 'src/app/ability';
 import { AbilityService } from '../abilityService';
 import * as _ from "lodash";
+import { SortablejsOptions } from 'angular-sortablejs';
+
 
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.css']
 })
+
 export class HeroDetailComponent implements OnInit {
   hero: Hero;
-  allAbilities: Ability[];
-  heroAbilities: Ability[];
-  selectedAbilities: Ability[]=[];
-  notHeroAbilities: Ability[] = [];
+  heroAbilities: Ability[]=[];
+  notHeroAbilities: Ability[]=[] ;
+
+  options: SortablejsOptions = {
+    group: 'test'
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -31,32 +36,18 @@ export class HeroDetailComponent implements OnInit {
   ngOnInit() {
     
     this.getHero();
-    this.getAbilities();
   }
+  
 
-  onClick(element,ability,list):void{
-    var array=this.selectedAbilities;
-    if(element.selected==true){
-      array.push(ability);
-    }else if(element.selected == false){
-      array= _.without(array,ability);
-    }
-    this.selectedAbilities=array;
-    console.log("selected abilities:--------");
-    array.forEach(element => {
-      console.log(element);
-    });
-  }
-
-  getAbilities(): void {
-    this.abilityService.getAbilities()
-      .subscribe(abilities => {this.allAbilities=abilities}); 
+  getNotHeroAbilities(id:number): void {
+    this.abilityService.getNotHeroAbilities(id)
+      .subscribe(abilities => this.notHeroAbilities=abilities); 
   }
 
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(id)
-      .subscribe(hero =>{ this.hero = hero; this.heroAbilities=hero.abilities; });
+      .subscribe(hero =>{ this.hero = hero; this.heroAbilities=hero.abilities; this.getNotHeroAbilities(hero.id);});
   }
 
 
@@ -65,7 +56,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.hero.abilities=this.selectedAbilities;
+    this.hero.abilities=this.heroAbilities;
     this.heroService.updateHero(this.hero)
       .subscribe(() => this.goBack());
   }
