@@ -9,14 +9,19 @@
   </div>
   <h2>Hero abilities</h2>
 
-  <mat-list role="list" [sortablejs]="heroAbilities" [sortablejsOptions]="options">
-    <mat-list-item role="listitem" *ngFor="let ability of heroAbilities">{{ability.description}}</mat-list-item>
+
+  <mat-list role="list" [sortablejs]="heroAbilities" [sortablejsOptions]="options" class="ability">
+    <mat-list-item role="listitem" *ngFor="let ability of heroAbilities" class="ability">
+      <a routerLink="/detail/{{ability.id}}">
+        {{ability.description}}
+      </a>
+    </mat-list-item>
   </mat-list>
 
   <h2>Adding/remove abilities</h2>
 
-   <mat-list role="list" [sortablejs]="notHeroAbilities" [sortablejsOptions]="options">
-    <mat-list-item #element *ngFor="let ability of notHeroAbilities" >
+   <mat-list class="ability" role="list" [sortablejs]="notHeroAbilities" [sortablejsOptions]="options">
+    <mat-list-item class="ability" #element *ngFor="let ability of notHeroAbilities" >
      {{ability.description}}
     </mat-list-item>
   </mat-list>

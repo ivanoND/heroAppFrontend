@@ -1,29 +1,26 @@
-/* HeroDetailComponent's private CSS styles */
-.abilities {
+.ability {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
   width: 15em;
 }
-
-.abilities li {
+.ability mat-list-item {
   position: relative;
   cursor: pointer;
   background-color: #EEE;
-  margin-top: .5em;
+  margin: .5em;
   padding: .3em 0;
   height: 1.6em;
-  width: 205px;
   border-radius: 4px;
 }
 
-.abilities li:hover {
+.ability mat-list-item:hover {
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
 }
 
-.abilities a {
+.ability a {
   color: #888;
   text-decoration: none;
   position: relative;
@@ -31,36 +28,7 @@
   width: 250px;
 }
 
-.abilities a:hover {
+.ability a:hover {
   color:#607D8B;
 }
 
-label {
-  display: inline-block;
-  width: 3em;
-  margin: .5em 0;
-  color: #607D8B;
-  font-weight: bold;
-}
-input {
-  height: 2em;
-  font-size: 1em;
-  padding-left: .4em;
-}
-button {
-  margin-top: 20px;
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer; cursor: hand;
-}
-button:hover {
-  background-color: #cfd8dc;
-}
-button:disabled {
-  background-color: #eee;
-  color: #ccc;
-  cursor: auto;
-}

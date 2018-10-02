@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import {MatListModule} from '@angular/material/list';
 import {SortablejsModule} from 'angular-sortablejs';
+import { AbilityDetailComponent } from './ability-detail/ability-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import {SortablejsModule} from 'angular-sortablejs';
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
+    AbilityDetailComponent,
   ],
   imports: [
     BrowserModule,
