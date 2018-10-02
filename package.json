@@ -24,10 +24,12 @@
     "@angular/router": "^6.1.0",
     "angular-font-awesome": "^3.1.2",
     "angular-in-memory-web-api": "^0.6.1",
+    "angular-sortablejs": "^2.6.0",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.11",
     "rxjs": "^6.0.0",
+    "sortablejs": "^1.7.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -39,6 +41,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/lodash": "^4.14.116",
     "@types/node": "~8.9.4",
+    "@types/sortablejs": "^1.7.0",
     "codelyzer": "~4.2.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",

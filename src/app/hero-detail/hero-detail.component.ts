@@ -1,14 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit } from '@angular/core';
 import {Hero} from '../hero';
 import {HeroService} from '../hero.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import { Ability } from 'src/app/ability';
-import { tap } from 'rxjs/operators';
-import { MessageService } from '../message.service';
 import { AbilityService } from '../abilityService';
 import * as _ from "lodash";
-import { MatSelectionList, MatListOption } from '@angular/material/list';
 
 @Component({
   selector: 'app-hero-detail',
@@ -20,6 +17,7 @@ export class HeroDetailComponent implements OnInit {
   allAbilities: Ability[];
   heroAbilities: Ability[];
   selectedAbilities: Ability[]=[];
+  notHeroAbilities: Ability[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +32,6 @@ export class HeroDetailComponent implements OnInit {
     
     this.getHero();
     this.getAbilities();
-
   }
 
   onClick(element,ability,list):void{
@@ -53,7 +50,7 @@ export class HeroDetailComponent implements OnInit {
 
   getAbilities(): void {
     this.abilityService.getAbilities()
-      .subscribe(abilities => this.allAbilities=abilities);
+      .subscribe(abilities => {this.allAbilities=abilities}); 
   }
 
   getHero(): void {

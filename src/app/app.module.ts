@@ -12,8 +12,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import {MatListModule} from '@angular/material/list';
-
-
+import {SortablejsModule} from 'angular-sortablejs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +20,7 @@ import {MatListModule} from '@angular/material/list';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +28,8 @@ import {MatListModule} from '@angular/material/list';
     AngularFontAwesomeModule,
     AppRoutingModule,
     HttpClientModule,
-    MatListModule
+    MatListModule,
+    SortablejsModule.forRoot({ animation: 150 }),
   ],
   providers: [],
   bootstrap: [AppComponent]
