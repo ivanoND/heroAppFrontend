@@ -13,7 +13,7 @@
   <mat-list class="ability" role="list" [sortablejs]="heroAbilities" [sortablejsOptions]="options" >
     <mat-list-item role="listitem" *ngFor="let ability of heroAbilities" class="ability">
       <a routerLink="/ability/detail/{{ability.id}}">
-        {{ability.description}}
+        <span class="badge">#{{heroAbilities.indexOf(ability)+1}}</span>{{ability.description}}
       </a>
     </mat-list-item>
   </mat-list>
@@ -26,7 +26,7 @@
   </h2>
 
 
-   <mat-list class="ability" role="list" [sortablejs]="notHeroAbilities" [sortablejsOptions]="options">
+   <mat-list #list class="ability" role="list" [sortablejs]="notHeroAbilities" [sortablejsOptions]="options">
     <mat-list-item class="ability" #element *ngFor="let ability of notHeroAbilities" >
       <a routerLink="/ability/detail/{{ability.id}}">
         {{ability.description}}
@@ -36,6 +36,7 @@
 
   <form (submit)="add(abilityDescription.value); abilityDescription.value=''">
       <label>Ability description:
+        <br>
         <input #abilityDescription/>
       </label>
       <!-- (click) passes input value to add() and then clears the input -->

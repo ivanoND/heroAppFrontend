@@ -33,8 +33,6 @@ button:disabled {
   cursor: auto;
 }
 
-
-
 .ability {
   margin: 0 0 2em 0;
   list-style-type: none;
@@ -82,4 +80,22 @@ button {
 button:hover {
   background-color: #cfd8dc;
 }
+
+.badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  left: -17px;
+  top: 0px;
+  height: 1.9em;
+  min-width: 16px;
+  text-align: right;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
 
