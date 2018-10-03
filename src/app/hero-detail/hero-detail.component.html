@@ -7,10 +7,10 @@
       <input [(ngModel)]="hero.name" placeholder="name"/>
     </label>
   </div>
-  <h2>Hero abilities</h2>
+  <h2>{{hero.name}} abilities</h2>
 
 
-  <mat-list role="list" [sortablejs]="heroAbilities" [sortablejsOptions]="options" class="ability">
+  <mat-list class="ability" role="list" [sortablejs]="heroAbilities" [sortablejsOptions]="options" >
     <mat-list-item role="listitem" *ngFor="let ability of heroAbilities" class="ability">
       <a routerLink="/ability/detail/{{ability.id}}">
         {{ability.description}}
@@ -18,11 +18,13 @@
     </mat-list-item>
   </mat-list>
 
-  <h2>Adding/remove abilities</h2>
+  <h2>Add/remove abilities</h2>
 
    <mat-list class="ability" role="list" [sortablejs]="notHeroAbilities" [sortablejsOptions]="options">
     <mat-list-item class="ability" #element *ngFor="let ability of notHeroAbilities" >
-     {{ability.description}}
+      <a routerLink="/ability/detail/{{ability.id}}">
+        {{ability.description}}
+      </a>
     </mat-list-item>
   </mat-list>
 

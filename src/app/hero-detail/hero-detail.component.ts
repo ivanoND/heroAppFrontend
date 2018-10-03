@@ -21,7 +21,8 @@ export class HeroDetailComponent implements OnInit {
   notHeroAbilities: Ability[]=[] ;
 
   options: SortablejsOptions = {
-    group: 'test'
+    group: 'test',
+    draggable: 'mat-list-item'
   };
 
   constructor(

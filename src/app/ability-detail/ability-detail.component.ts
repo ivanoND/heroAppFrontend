@@ -40,4 +40,9 @@ export class AbilityDetailComponent implements OnInit {
       .subscribe(() => this.goBack());
   }
 
+  delete(): void{
+    this.abilityService.deleteAbility(this.ability)
+      .subscribe(() => this.goBack());
+  }
+
 }

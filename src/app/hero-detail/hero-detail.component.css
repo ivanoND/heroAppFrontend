@@ -1,3 +1,7 @@
+mat-list{
+  min-height: 30px;
+}
+
 label {
   display: inline-block;
   width: 3em;
