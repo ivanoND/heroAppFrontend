@@ -62,6 +62,13 @@ const httpOptions = {
     );
   }
 
+  addAbility(ability: Ability): Observable<Ability> {
+    return this.http.post<Ability>(this.abilitiesUrl.concat("/ability"), ability, httpOptions).pipe(
+      tap((ability: Ability) => this.log(`added ability w/ id=${ability.id}`)),
+      catchError(this.handleError<Ability>('addAbility'))
+    );
+  }
+
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`AbilityService: ${message}`);

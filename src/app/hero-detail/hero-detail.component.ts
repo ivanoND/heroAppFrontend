@@ -62,5 +62,12 @@ export class HeroDetailComponent implements OnInit {
       .subscribe(() => this.goBack());
   }
 
+  add(abilityDescription: string): void{
+    var ability = new Ability();
+    ability.description=abilityDescription;
+    this.abilityService.addAbility(ability)
+    .subscribe((ability)=>this.notHeroAbilities.push(ability));
+  }
+
 
 }

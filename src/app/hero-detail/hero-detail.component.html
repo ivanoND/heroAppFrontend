@@ -7,7 +7,7 @@
       <input [(ngModel)]="hero.name" placeholder="name"/>
     </label>
   </div>
-  <h2>{{hero.name}} abilities</h2>
+  <h2>{{hero.name}}'s abilities</h2>
 
 
   <mat-list class="ability" role="list" [sortablejs]="heroAbilities" [sortablejsOptions]="options" >
@@ -18,7 +18,13 @@
     </mat-list-item>
   </mat-list>
 
-  <h2>Add/remove abilities</h2>
+  
+  <h2>
+    <i class="fa fa-arrows-v" aria-hidden="true"></i>
+    Add/remove abilities 
+    <i class="fa fa-arrows-v" aria-hidden="true"></i>
+  </h2>
+
 
    <mat-list class="ability" role="list" [sortablejs]="notHeroAbilities" [sortablejsOptions]="options">
     <mat-list-item class="ability" #element *ngFor="let ability of notHeroAbilities" >
@@ -27,6 +33,16 @@
       </a>
     </mat-list-item>
   </mat-list>
+
+  <form (submit)="add(abilityDescription.value); abilityDescription.value=''">
+      <label>Ability description:
+        <input #abilityDescription/>
+      </label>
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button type="submit">
+        add
+      </button>
+    </form>
 
 
 
