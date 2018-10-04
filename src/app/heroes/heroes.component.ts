@@ -28,7 +28,7 @@ export class HeroesComponent implements OnInit {
       .subscribe((heroes) => this.heroes = heroes);
   }
 
-  add(name: string): void {
+  add(name: string,email: string): void {
     name = name.trim();
     if (name) {
       // questo vale in ES6
@@ -38,7 +38,7 @@ export class HeroesComponent implements OnInit {
       // in generale vale {var1,var2} => {var1: var1, var2: var2}
       // la seconda parte ha a che fare con typeScript ed e' un'operazione a livello di sintassi
       // analoga all'operatore di cast di Java.
-      this.heroService.addHero({name} as Hero)
+      this.heroService.addHero({name,email} as Hero)
         .subscribe(hero => this.getHeroes());
     }
   }

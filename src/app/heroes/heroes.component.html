@@ -1,12 +1,20 @@
-<form (submit)="add(heroName.value); heroName.value=''">
+
+<br>
+<form (submit)="add(heroName.value,heroEmail.value); heroName.value='';heroEmail.value='';">
   <label>Hero name:
     <input #heroName/>
   </label>
+  <br>
+  <label>Hero email:
+      <input #heroEmail/>
+    </label>
+    <br>
   <!-- (click) passes input value to add() and then clears the input -->
   <button type="submit">
     add
   </button>
 </form>
+<br>
 
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
