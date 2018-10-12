@@ -16,7 +16,7 @@ const httpOptions = {
     
 
     // URL to web api
-  private abilitiesUrl = 'http://localhost:8080/api';
+  private abilitiesUrl = 'https://ivano-s-hero.herokuapp.com/api';
 
   constructor(private http: HttpClient,
               private messageService: MessageService) {

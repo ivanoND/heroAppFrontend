@@ -1,6 +1,9 @@
 <div *ngIf="ability">
 
-  <h2>{{ability.description | uppercase}} Details</h2>
+  <h2>
+      <i class="fa fa-bolt" aria-hidden="true"></i>
+    {{ability.description}} details
+  </h2>
   <div><span>id: </span>{{ability.id}}</div>
   <div>
     <label>description:

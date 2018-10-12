@@ -1,6 +1,9 @@
 <div *ngIf="hero">
 
-  <h2>{{hero.name | uppercase}} Details</h2>
+  <h2>
+      <i class="fa fa-search" aria-hidden="true"></i>
+    {{hero.name}}'s' details
+  </h2>
   <div><span>id: </span>{{hero.id}}</div>
   <div>
     <label>name:
@@ -12,7 +15,10 @@
         <input [(ngModel)]="hero.email" placeholder="email"/>
       </label>
     </div>
-  <h2>{{hero.name}}'s abilities</h2>
+  <h2>
+      <i class="fa fa-bolt" aria-hidden="true"></i>
+    {{hero.name}}'s abilities
+  </h2>
 
 
   <mat-list class="ability" role="list" [sortablejs]="heroAbilities" [sortablejsOptions]="options" >
@@ -39,6 +45,11 @@
     </mat-list-item>
   </mat-list>
 
+  <h2>
+    <i class="fa fa-plus" aria-hidden="true"></i>
+    Add new ability 
+  </h2>
+  
   <form (submit)="add(abilityDescription.value); abilityDescription.value=''">
       <label>Ability description:
         <br>

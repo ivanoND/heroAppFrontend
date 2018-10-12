@@ -1,21 +1,7 @@
 
-<br>
-<form (submit)="add(heroName.value,heroEmail.value); heroName.value='';heroEmail.value='';">
-  <label>Hero name:
-    <input #heroName/>
-  </label>
-  <br>
-  <label>Hero email:
-      <input #heroEmail/>
-    </label>
-    <br>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button type="submit">
-    add
-  </button>
-</form>
-<br>
-
+<h2>
+    <i class="fa fa-id-card-o" aria-hidden="true"></i>
+  Heroes list</h2>
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
     <a routerLink="/detail/{{hero.id}}">
@@ -26,3 +12,23 @@
     </button>
   </li>
 </ul>
+
+<h2>
+    <i class="fa fa-user-plus" aria-hidden="true"></i>
+    Add new hero
+</h2>
+<form (submit)="add(heroName.value,heroEmail.value); heroName.value='';heroEmail.value='';">
+  
+  <label>Hero name :
+    <input #heroName/>
+  </label>
+  <br>
+  <label>Hero email : 
+      <input #heroEmail/>
+    </label>
+    <br>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="submit">
+    add
+  </button>
+</form>
